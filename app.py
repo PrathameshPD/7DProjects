@@ -74,7 +74,7 @@ st.write("This app predicts whether a customer is likely to check in based on th
 with st.form("input_form"):
     st.subheader("Enter Customer Details")
     age = st.number_input("Age", min_value=0, max_value=100, value=0, help="Customer's age.")
-    persons_nights = st.number_input("PersonsNights", min_value=1, value=0, help="Total number of person-nights")
+    persons_nights = st.number_input("PersonsNights", min_value=0, value=0, help="Total number of person-nights")
     avg_lead_time = st.number_input("AverageLeadTime", min_value=0, value=0, help="The average time (in days) between booking creation and the check-in date.")
     lodging_revenue = st.number_input("LodgingRevenue", min_value=0.0, value=0.0, format="%.2f", help="Revenue from lodging.")
     other_revenue = st.number_input("OtherRevenue", min_value=0.0, value=0.0, format="%.2f", help="Revenue from other services.")
