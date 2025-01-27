@@ -31,7 +31,7 @@
 
 #### Part 2 Solution Link: https://colab.research.google.com/drive/1v4AanxpoM4Fs4gbKZOU238Yq3X3S8ZCP?usp=sharing
 
-#### Deployment Link : https://meet.google.com/oqw-zpjm-wxk
+#### Deployment Link : https://hotelcheckin.streamlit.app/
 
 Documentation [Part_2_JrDataScientist] 
 
