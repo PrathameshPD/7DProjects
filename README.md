@@ -112,6 +112,10 @@ Steps:
 
 ----> Evaluation
 
+        Results:
+        Test MAE: 0.0100
+        Test RMSE: 0.1000
+        Test Accuracy: 0.9900
         Metrics: Accuracy, Mean Absolute Error (MAE), and Root Mean Squared Error (RMSE) are calculated on the test dataset.
         
         Visualization: Training and validation accuracy and loss curves are plotted to analyze model performance.
