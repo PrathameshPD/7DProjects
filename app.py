@@ -22,21 +22,15 @@ def set_background(png_file):  #Custom function to add a background image to the
 set_background('hotelre.png') #is read, encoded with base64, and applied using HTML and CSS styling.
 
 
-# Load resources (model, scaler, and encoder)
-@st.cache_resource
-def load_resources():
-    try:
-        model = tf.keras.models.load_model('my_model.keras')
-        scaler = joblib.load('scaler.pkl')
-        encoder = joblib.load('encoder.pkl')
-        return model, scaler, encoder
-    except FileNotFoundError as e:
-        st.error(f"Required file not found: {e}")
-        st.stop()
-    except Exception as e:
-        st.error(f"Unexpected error while loading resources: {e}")
-        st.stop()
+def load_artifacts():
+    # Load the trained model
+    model = tf.keras.models.load_model('my_model.keras')
 
+    # Load the MinMaxScaler and encoder
+    scaler = joblib.load('scaler.pkl')
+    encoder = joblib.load('encoder.pkl')
+
+    return model, scaler, encoder
 
 # Preprocess input data
 def preprocess_input(data, scaler, encoder):
@@ -69,8 +63,8 @@ def preprocess_input(data, scaler, encoder):
         st.stop()
 
 
-# Load resources
-model, scaler, encoder = load_resources()
+# Load artifacts
+model, scaler, encoder = load_artifacts()
 
 # Streamlit app
 st.title("CUSTOMER CHECK-IN PREDICTION")
@@ -79,13 +73,13 @@ st.write("This app predicts whether a customer is likely to check in based on th
 # Input form
 with st.form("input_form"):
     st.subheader("Enter Customer Details")
-    age = st.number_input("Age", min_value=0, max_value=100, value=30, help="Customer's age.")
-    persons_nights = st.number_input("PersonsNights", min_value=1, value=1, help="Total number of person-nights")
-    avg_lead_time = st.number_input("AverageLeadTime", min_value=0, value=30, help="The average time (in days) between booking creation and the check-in date.")
+    age = st.number_input("Age", min_value=0, max_value=100, value=0, help="Customer's age.")
+    persons_nights = st.number_input("PersonsNights", min_value=0, value=0, help="Total number of person-nights")
+    avg_lead_time = st.number_input("AverageLeadTime", min_value=0.0, value=0.0, help="The average time (in days) between booking creation and the check-in date.")
     lodging_revenue = st.number_input("LodgingRevenue", min_value=0.0, value=0.0, format="%.2f", help="Revenue from lodging.")
     other_revenue = st.number_input("OtherRevenue", min_value=0.0, value=0.0, format="%.2f", help="Revenue from other services.")
     days_since_last_stay = st.number_input("DaysSinceLastStay", min_value=0, value=0, help="Days since the customer's last stay.")
-    distribution_channel = st.selectbox("Distribution Channel", ['Direct', 'Corporate', 'Travel Agent/Operator', 'Other'])
+    distribution_channel = st.selectbox("Distribution Channel", ['Direct', 'Corporate', 'Travel Agent/Operator', 'Electronic Distribution'])
     submit_button = st.form_submit_button("Predict")
 
 # Process user input and make prediction
