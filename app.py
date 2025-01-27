@@ -98,10 +98,6 @@ if submit_button:
     # Preprocess the data
     processed_data = preprocess_input(input_data, scaler, encoder)
 
-    # Display preprocessed data (optional for debugging or transparency)
-    if st.checkbox("Show Preprocessed Data"):
-        st.write(processed_data)
-
     # Make prediction
     try:
         prediction = model.predict(processed_data)
