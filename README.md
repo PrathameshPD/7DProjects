@@ -119,7 +119,7 @@ Steps:
 
         from sklearn.metrics import precision_score, recall_score, f1_score, roc_auc_score
 
-        We can use Classificaion Metrics to get more appropriate results
+        We need use Classificaion Metrics to get more appropriate results (because of discrete Value)
         test_precision = precision_score(y_test, y_test_pred)
         test_recall = recall_score(y_test, y_test_pred)
         test_f1 = f1_score(y_test, y_test_pred)
