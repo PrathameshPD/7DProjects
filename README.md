@@ -116,6 +116,20 @@ Steps:
         Test MAE: 0.0100
         Test RMSE: 0.1000
         Test Accuracy: 0.9900
+
+        from sklearn.metrics import precision_score, recall_score, f1_score, roc_auc_score
+
+#### test_precision = precision_score(y_test, y_test_pred)
+#### test_recall = recall_score(y_test, y_test_pred)
+#### test_f1 = f1_score(y_test, y_test_pred)
+#### test_auc = roc_auc_score(y_test, model.predict(X_test))
+
+#### print(f"Test Precision: {test_precision:.4f}")
+#### print(f"Test Recall: {test_recall:.4f}")
+#### print(f"Test F1-Score: {test_f1:.4f}")
+#### print(f"Test AUC: {test_auc:.4f}")
+
+
         Metrics: Accuracy, Mean Absolute Error (MAE), and Root Mean Squared Error (RMSE) are calculated on the test dataset.
         
         Visualization: Training and validation accuracy and loss curves are plotted to analyze model performance.
